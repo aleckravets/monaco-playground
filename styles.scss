@@ -1,0 +1,11 @@
+#container {
+    border: 1px solid #000000;
+    /*height: 19px;*/
+    width: 600px;
+    margin: 0 auto;
+
+    .monaco-editor .margin-view-overlays .folding {
+        background-position: calc(50%) center;
+        opacity: 1;
+    }
+}
