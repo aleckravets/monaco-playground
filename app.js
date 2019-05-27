@@ -1,4 +1,3 @@
-import * as monaco from 'monaco-editor';
 import $ from "jquery";
 
 const opts = {
@@ -23,29 +22,39 @@ const opts = {
 
 const container = $('#container');
 
-const editor = monaco.editor.create(container.get(0), opts);
+function initMonaco() {
+    require.ensure(['monaco-editor'], require => {
+        const monaco = require('monaco-editor');
 
-const adjustHeight = () => {
-    const lineCount = editor._modelData.viewModel.getLineCount();
-    const lineHeight = editor.getConfiguration().lineHeight;
-    container.height(lineCount * lineHeight);
-    editor.layout();
-};
+        const editor = monaco.editor.create(container.get(0), opts);
 
-setTimeout(adjustHeight);
+        const adjustHeight = () => {
+            const lineCount = editor._modelData.viewModel.getLineCount();
+            const lineHeight = editor.getConfiguration().lineHeight;
+            container.height(lineCount * lineHeight);
+            editor.layout();
+        };
 
-editor.onDidChangeModelContent(() => {
-    adjustHeight();
-});
+        setTimeout(adjustHeight);
 
-editor._contributions["editor.contrib.folding"].foldingModel.onDidChange(adjustHeight)
+        editor.onDidChangeModelContent(() => {
+            adjustHeight();
+        });
 
-// const el = $(`<span data-lang="csharp">${JSON.stringify('abc')}</span>`).get(0);
-//
-// $(document.body).append(el);
-//
-// monaco.editor.colorizeElement(el, null).then(() => {
-//     console.log(el.outerHTML);
-// });
+        editor._contributions["editor.contrib.folding"].foldingModel.onDidChange(adjustHeight)
+
+        // const el = $(`<span data-lang="csharp">${JSON.stringify('abc')}</span>`).get(0);
+        //
+        // $(document.body).append(el);
+        //
+        // monaco.editor.colorizeElement(el, null).then(() => {
+        //     console.log(el.outerHTML);
+        // });
+
+    });
+}
+
+$('#init').click(() => initMonaco());
+
 
 
