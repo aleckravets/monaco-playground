@@ -30,7 +30,7 @@ function initMonaco() {
 
         const adjustHeight = () => {
             const lineCount = editor._modelData.viewModel.getLineCount();
-            const lineHeight = editor.getConfiguration().lineHeight;
+            const lineHeight = editor.getOption(monaco.editor.EditorOption.lineHeight);
             container.height(lineCount * lineHeight);
             editor.layout();
         };

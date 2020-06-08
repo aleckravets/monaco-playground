@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -31,6 +32,10 @@ module.exports = {
 				use: [ 'style-loader', 'css-loader' ]
 			},
             {
+                test: /\.ttf$/,
+                use: ['file-loader']
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     "style-loader", // creates style nodes from JS strings
@@ -58,11 +63,12 @@ module.exports = {
 		}
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['dist/*']),
         new HtmlWebpackPlugin({
             title: 'Webpack playground',
             // Load a custom template (lodash by default see the FAQ for details)
             template: 'index.html'
         }),
+        new MonacoWebpackPlugin()
     ]
 };
