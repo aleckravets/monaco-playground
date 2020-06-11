@@ -7,16 +7,11 @@ const path = require('path');
 module.exports = {
 	mode: 'none',
 	entry: {
-		"app": './index.js',
-		// "editor.worker": 'monaco-editor/esm/vs/editor/editor.worker.js',
-		// "json.worker": 'monaco-editor/esm/vs/language/json/json.worker',
-		// "css.worker": 'monaco-editor/esm/vs/language/css/css.worker',
-		// "html.worker": 'monaco-editor/esm/vs/language/html/html.worker',
-		// "ts.worker": 'monaco-editor/esm/vs/language/typescript/ts.worker',
+		"index": './index.js'
 	},
 	output: {
 		globalObject: 'self',
-		filename: '[name].bundle.js',
+		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	},
     devtool: "source-map",
@@ -24,7 +19,10 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				loader: 'babel-loader',
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                },
 				exclude: /node_modules/
         	},
 			{
@@ -34,6 +32,10 @@ module.exports = {
             {
                 test: /\.ttf$/,
                 use: ['file-loader']
+            },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
             },
             {
                 test: /\.scss$/,
@@ -65,8 +67,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist/*']),
         new HtmlWebpackPlugin({
-            title: 'Webpack playground',
-            // Load a custom template (lodash by default see the FAQ for details)
+            title: 'Playground',
             template: 'index.html'
         }),
         new MonacoWebpackPlugin()

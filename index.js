@@ -1,5 +1,5 @@
 import 'angular';
+import 'angular-ui-router';
 import './styles.scss';
 import './app';
-
-angular.module('app', []);
+import './states';
