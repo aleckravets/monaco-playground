@@ -49,6 +49,7 @@ class ReportController {
     }
 
     param1(value) {
+        // this.$state.go('report', {param1: value});
         this.$location.search('param1', value);
     }
 

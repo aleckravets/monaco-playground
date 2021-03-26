@@ -12,7 +12,7 @@ app.config(($stateProvider) => {
                         <li>
                             <span>Reports</span>
                             <ul>
-                                <li><a href="/report/PL"">PL</a></li>
+                                <li><a href="/report/PL">PL</a></li>
                                 <li><a href="/report/PVCF">PVCF</a></li>
                             </ul>
                         </li>

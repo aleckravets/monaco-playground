@@ -10,7 +10,7 @@ app.config(($stateProvider) => {
                     <div>
                         <h2>Monaco Editor</h2>
                         <button ng-click="monacoCtrl.initMonaco()">Init monaco</button>
-                        <div id="container"></div>
+                        <div id="container" height="400px"></div>
                     </div>`,
                 controller: MonacoController,
                 controllerAs: 'monacoCtrl',
@@ -35,6 +35,7 @@ const opts = {
     wordWrap: 'on',
     renderLineHighlight: 'none',
     lineDecorationsWidth: 0,
+    theme: 'vs-dark'
 };
 
 class MonacoController {

@@ -1,6 +1,5 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 
@@ -65,11 +64,13 @@ module.exports = {
 		}
     },
     plugins: [
-        new CleanWebpackPlugin(['dist/*']),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Playground',
             template: 'index.html'
         }),
-        new MonacoWebpackPlugin()
+        new MonacoWebpackPlugin({
+            languages: ['csharp', 'javascript', 'typescript', 'json', 'markdown', 'html', 'css']
+        })
     ]
 };
