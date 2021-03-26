@@ -17,6 +17,7 @@ app.config(($stateProvider) => {
                             </ul>
                         </li>
                         <li><a href="/monaco">Monaco</a></li>
+                        <li><a href="/math">MathJax</a></li>
                     </ul>
                     <ui-view></ui-view>
                 </div>`,
