@@ -1,7 +1,0 @@
-{
-  "open": true,
-  "reloadDebounce": 600,
-  "server": {
-    "baseDir": "dist"
-  }
-}

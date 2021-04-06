@@ -18,6 +18,7 @@ app.config(($stateProvider) => {
                         </li>
                         <li><a href="/monaco">Monaco</a></li>
                         <li><a href="/math">MathJax</a></li>
+                        <li><a href="/file/notebooks/getstarted.ipynb">File</a></li>
                     </ul>
                     <ui-view></ui-view>
                 </div>`,
